@@ -21,8 +21,8 @@ body {
 #roulette-wheel {
     width: 100%;
     height: 100%;
-    background-image: url('roulette-wheel.png'); /* Image d'une vraie roulette */
-    background-size: cover;
+    background-color: #000; /* Remplace temporairement l'image par une couleur */
+}    background-size: cover;
     position: relative;
 }
 
