@@ -1,11 +1,70 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roulette Game</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f3f3f3;
+        }
+
+        .roulette-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 10px solid #333;
+            overflow: hidden;
+        }
+
+        #roulette-wheel {
+            width: 100%;
+            height: 100%;
+            background-color: #000; /* Remplace l'image de la roulette */
+            position: relative;
+        }
+
+        #ball {
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #spin-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #number-table {
+            margin-top: 20px;
+            width: 50%;
+            border-collapse: collapse;
+        }
+
+        #number-table td {
+            border: 1px solid #333;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <div class="roulette-container">
@@ -13,7 +72,7 @@
             <div id="ball"></div>
         </div>
     </div>
-    
+
     <div class="table">
         <h2>Tableau des numéros</h2>
         <table id="number-table">
@@ -22,14 +81,25 @@
                 <td>1</td>
                 <td>2</td>
                 <td>3</td>
-                <!-- Ajoute les autres numéros ici -->
             </tr>
-            <!-- Ajoute plus de rangées de numéros ici -->
         </table>
     </div>
 
     <button id="spin-btn">Lancer la roulette</button>
 
-    <script src="script.js"></script>
+    <script>
+        document.getElementById('spin-btn').addEventListener('click', function() {
+            const ball = document.getElementById('ball');
+            const roulette = document.getElementById('roulette-wheel');
+
+            roulette.style.transition = 'transform 4s ease-out';
+            roulette.style.transform = `rotate(${Math.random() * 360 + 720}deg)`; // Spin aléatoire
+
+            setTimeout(function() {
+                const winningNumber = Math.floor(Math.random() * 37); // Numéro aléatoire
+                alert('Le numéro gagnant est: ' + winningNumber);
+            }, 4000);
+        });
+    </script>
 </body>
 </html>
